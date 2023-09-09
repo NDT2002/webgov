@@ -1,0 +1,117 @@
+{% extends 'manager/base.html' %} {% load static %} {% block contentwrapper %}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">
+            Banner <a href="{% url 'banner_manager'  %}"><i class="bi bi-list text-primary"></i></a>
+          </h1>
+        </div>
+
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- general form elements disabled -->
+    <div class="card card-warning">
+      <div class="card-header bg-blue">
+        <h3 class="card-title">Thêm Banner Mới</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- text input -->
+              <div class="form-group">
+                <label>Tiêu đề:</label>
+                <input type="text" class="form-control" rows="" placeholder="Nhập tên Banner ..." />
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Vị trí :</label>
+                <select class="form-control">
+                    <option>--Không chọn--</option>
+                    <option>....</option>
+                    <option>....</option>
+                </select>
+            </div>
+            <div class="col-sm-12">
+                <!-- text input -->
+                <div class="form-group">
+                    <label>Chọn ảnh :</label>
+                    <!-- Upload  -->
+                    <div class="input-box col-md-5  d-flex align-items-center">
+                        <label class="picture" for="image-product" tabIndex="0">
+                            <span class="picture_image"></span>
+                        </label>
+                        <input type="file" name="images[]" multiple class="form-control-file" id="image-product" multiple>
+                    </div>
+                </div>
+                
+                <!-- /.card-body -->
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Link liên kết:</label>
+                <input type="text" class="form-control" rows="" placeholder="Nhập liên kết ..." />
+                
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Mô tả :</label>
+                <input type="text" class="form-control" rows="" placeholder="Nhập mô tả ..." />
+
+            </div>
+      <!-- /.card -->
+      <div class="card-footer d-flex justify-content-end mr-4">
+        <button type="submit" class="btn btn-primary mr-4">Lưu</button>
+        <button type="submit" class="btn btn-danger">Hủy</button>
+      </div>
+    </div>
+    <script>
+        const inputFile = document.querySelector("#image-product");
+        const productImage = document.querySelector(".picture_image");
+        const pictureImageTxt = "Chọn ảnh mới";
+        productImage.innerHTML = pictureImageTxt;
+
+        inputFile.addEventListener("change", function(e) {
+            const inputTarget = e.target;
+            const file = inputTarget.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function(e) {
+                    const readerTarget = e.target;
+
+                    const img = document.createElement("img");
+                    img.src = readerTarget.result;
+                    img.classList.add("picture_img");
+
+                    productImage.innerHTML = "";
+                    productImage.appendChild(img);
+                });
+
+                reader.readAsDataURL(file);
+            } else {
+                productImage.innerHTML = pictureImageTxt;
+            }
+        });
+    </script>
+  </section>
+  {% endblock contentwrapper %}
+</div>

@@ -1,0 +1,131 @@
+{% extends 'manager/base.html' %} {% load static %} {% block contentwrapper %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Tác giả</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Auth</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-primary h-100">
+          <div class="card-header">
+            <h3 class="card-title">Thêm mới tác giả</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form method="post" action="{% url 'add_auth' %}">
+            {% csrf_token %}
+            <div class="card-body">
+              <div class="form-group-author">
+                <label for="user_login">Tên đăng nhập</label>
+                <input type="text" class="form-control" id="user_login" name="user_login" placeholder="Nhập tên đăng nhập" />
+              </div>
+              <div class="form-group-author">
+                <label for="user_pass">Mật khẩu</label>
+                <input type="password" class="form-control" id="user_pass" name="user_pass" placeholder="Nhập mật khẩu" />
+              </div>
+              <div class="form-group-author">
+                <label for="user_email">Email</label>
+                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Nhập địa chỉ email" />
+              </div>
+              <div class="form-group-author">
+                <label for="display_name">Tên hiển thị</label>
+                <input type="text" class="form-control" id="display_name" name="display_name" placeholder="Nhập tên hiển thị" />
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="px-3">
+              <button type="submit"  id="" class="btn btn-primary float-right">Lưu</button>
+              <button type="reset"  id="btn-reset" class="btn  btn-danger float-right" style="margin-right: 10px">Hủy</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card card-primary h-100">
+          <div class="card-header">
+            <h3 class="card-title">Thông tin chi tiết</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          {% comment %} <form method=""> {% endcomment %}
+            {% comment %} {% csrf_token %} {% endcomment %}
+            <div class="card-body">
+              <div class="form-group-author">
+                <label for="user_position">Vị trí công tác</label>
+                <input type="text" class="form-control" id="user_position" name="user_position" placeholder="Nhập vị trí công tác" />
+              </div>
+              <div class="form-group-author">
+                <label for="user_address">Địa chỉ</label>
+                <input type="text" class="form-control" id="user_address" name="user_address" placeholder="Nhập địa chỉ" />
+              </div>
+              <div class="form-group-author">
+                <label for="user_phone">Số điện thoại</label>
+                <input type="phone" class="form-control" id="user_phone" name="user_phone" placeholder="Nhập số điện thoại" />
+              </div>
+              <div class="form-group-author">
+                <label for="user_description">Mô tả</label>
+                <textarea class="form-control" id="user_description" name="user_description" rows="3" placeholder="Nhập mô tả"></textarea>
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <!-- /.row -->
+           
+          {% comment %} </form> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script>
+  // Function to check if any field in col-4 is empty
+  function checkForm() {
+    var col4Inputs = document.querySelectorAll(".col-md-4 input, .col-md-4 textarea");
+    var col8Inputs = document.querySelectorAll(".col-md-8 input, .col-md-8 textarea");
+    var btnSave = document.getElementById("btn-save");
+
+    var disableFields = false;
+
+    for (var i = 0; i < col4Inputs.length; i++) {
+      if (col4Inputs[i].value.trim() === "") {
+        disableFields = true;
+        break;
+      }
+    }
+
+    for (var j = 0; j < col8Inputs.length; j++) {
+      col8Inputs[j].disabled = disableFields;
+    }
+
+    btnSave.disabled = disableFields;
+  }
+
+  // Attach the checkForm function to the input fields' onchange event
+  var col4Inputs = document.querySelectorAll(".col-md-4 input, .col-md-4 textarea");
+  for (var k = 0; k < col4Inputs.length; k++) {
+    col4Inputs[k].addEventListener("input", checkForm);
+  }
+
+  // Check the form initially when the page loads
+  checkForm();
+</script>
+
+{% endblock contentwrapper %}

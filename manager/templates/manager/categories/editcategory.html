@@ -1,0 +1,63 @@
+{% extends 'manager/base.html' %} {% load static %} {% block contentwrapper %}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Danh mục  <a href=""><i class="bi bi-file-plus text-primary"></i></a></h1>
+        </div>
+
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- general form elements disabled -->
+    <div class="card card-warning">
+      <div class="card-header bg-blue">
+        <h3 class="card-title">Thêm Danh Mục Mới </h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <form role="form">
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- text input -->
+              <div class="form-group">
+                <label>Tên Danh Mục:</label>
+                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <!-- text input -->
+              <div class="form-group">
+                <label>Mô tả:</label>
+                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+              </div>
+            </div>
+
+            
+          </div>
+        </form>
+
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+      <div class="card-footer d-flex justify-content-end mr-4">
+        <button type="submit" class="btn btn-primary mr-4">Lưu</button>
+        <button type="submit" class="btn btn-danger">Hủy</button>
+      </div>
+    </div>
+  </section>
+  {% endblock contentwrapper %}
+</div>

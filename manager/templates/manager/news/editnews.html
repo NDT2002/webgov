@@ -1,0 +1,180 @@
+{% extends 'manager/base.html' %} 
+{% load static %}
+{% block contentwrapper %}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">
+            Tin Tức <a href=""><i class="bi bi-file-plus text-primary"></i></a>
+          </h1>
+        </div>
+
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- general form elements disabled -->
+    <div class="card card-warning">
+      <div class="card-header">
+        <h3 class="card-title">Thêm Mới Tin Tức</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body">
+        <form method="post" action="{% url 'edit_news' post.id %}">
+          {% csrf_token %}
+          <div class="row">
+              <div class="col-sm-6">
+                  <label>Tác giả/Người viết:</label>
+                  <select class="form-control" name="post_author">
+                      {% for user in users %}
+                      <option value="{{ user.id }}" {% if user.id == post.post_author.id %}selected{% endif %}>{{ user.display_name }}</option>
+                      {% endfor %}
+                  </select>
+              </div>
+              <div class="col-sm-6">
+                  <label>Ngày đăng:</label>
+                  <input value="{{ post.post_date|date:'Y-m-d\TH:i' }}" class="form-control" type="datetime-local" id="publish_date" name="post_date" />
+              </div>
+              <div class="col-sm-6">
+                  <!-- select -->
+                  <div class="form-group">
+                      <label>Loại bài viết</label>
+                      <select class="form-control" name="post_type">
+                          <option value="article" {% if post.post_type == 'article' %}selected{% endif %}>Bài viết</option>
+                          <option value="news" {% if post.post_type == 'news' %}selected{% endif %}>Tin tức</option>
+                          <option value="blog" {% if post.post_type == 'blog' %}selected{% endif %}>Blog</option>
+                          <!-- Thêm các giá trị khác tùy theo nhu cầu của bạn -->
+                      </select>
+                  </div>
+              </div>
+              <div class="col-sm-6">
+                  <!-- select -->
+                  <div class="form-group">
+                      <label>Trạng thái</label>
+                      <select class="form-control" name="post_status">
+                          <option value="published" {% if post.post_status == 'published' %}selected{% endif %}>Đã Xuất Bản</option>
+                          <option value="pending" {% if post.post_status == 'pending' %}selected{% endif %}>Chờ Duyệt</option>
+                          <option value="draft" {% if post.post_status == 'draft' %}selected{% endif %}>Nháp</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <!-- text input -->
+                  <div class="form-group">
+                      <label>Tiêu Đề:</label>
+                      <textarea class="form-control" rows="3" name="post_title" placeholder="Enter ...">{{ post.post_title }}</textarea>
+                  </div>
+              </div>
+              {% for post_meta in post.postmeta_set.all %}
+              {% if post_meta.meta_key == 'description' %}
+                  <div class="col-sm-12 form-group">
+                      <label class="col-form-label" for="description">Mô tả:</label>
+                      <textarea class="form-control" rows='3' id="description" name="description" placeholder="Enter ...">{{ post_meta.meta_value }}</textarea>
+                  </div>
+              {% endif %}
+          {% endfor %}
+              <div class="col-sm-12">
+                  <!-- text input -->
+                  <div class="form-group">
+                      <label>Nội Dung:</label>
+                      <div class="card-body pad">
+                          <div class="mb-3 h-100">
+                              <textarea row='10' class="textarea " name="post_content" placeholder="Place some text here"
+                                  style="width: 100%;  font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ post.post_content }}</textarea>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              {% for post_meta in post.postmeta_set.all %}
+                  {% if post_meta.meta_key == 'tags' %}
+                      <div class="col-sm-6 form-group">
+                          <label class="col-form-label" for="tags">Thẻ/Tags:</label>
+                          <input class="form-control" type="text" id="tags" name="tags" value="{{ post_meta.meta_value }}" />
+                      </div>
+                  {% endif %}
+              {% endfor %}
+              <div class="col-sm-12 form-group">
+                <label class="col-form-label" for="image">Hình ảnh đại diện:</label>
+                <div class="input-box d-flex flex-column align-items-start">
+                  <img src="{{ post.featured_image.url }}" alt="Featured Image " class="" />
+                    <label class="picture" for="post_image" tabIndex="0">
+                        <span class="picture_image">
+                                <!-- Hiển thị hình ảnh nếu có -->
+                                <img src="{{ post.featured_image.url }}" alt="Featured Image" />
+                        </span>
+                    </label>
+                    <input  type="file" name="post_image" class="form-control-file" id="post_image" multiple />
+                </div>
+            </div>
+            
+          </div>
+      
+          <div class="card-footer d-flex justify-content-end mr-4">
+              <button type="submit" class="btn btn-primary mr-4">Lưu</button>
+              <button type="button" class="btn btn-danger">Hủy</button>
+          </div>
+      </form>
+      
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </section>
+  <script>
+    const inputFile = document.querySelector("#post_image");
+    const productImage = document.querySelector(".picture_image");
+    const pictureImageTxt = "Chọn ảnh mới";
+
+    // Kiểm tra nếu đã có ảnh đại diện
+    const existingImage = document.querySelector(".existing-featured-image");
+    if (existingImage) {
+        const img = document.createElement("img");
+        img.src = existingImage.dataset.imageUrl;
+        img.classList.add("picture_img");
+        productImage.innerHTML = "";
+        productImage.appendChild(img);
+    } else {
+        productImage.innerHTML = pictureImageTxt;
+    }
+
+    inputFile.addEventListener("change", function(e) {
+        const inputTarget = e.target;
+        const file = inputTarget.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function(e) {
+                const readerTarget = e.target;
+
+                const img = document.createElement("img");
+                img.src = readerTarget.result;
+                img.classList.add("picture_img");
+
+                productImage.innerHTML = "";
+                productImage.appendChild(img);
+            });
+
+            reader.readAsDataURL(file);
+        } else {
+            // Nếu không có tệp được chọn, hiển thị ảnh mặc định
+            productImage.innerHTML = pictureImageTxt;
+        }
+    });
+</script>
+
+</div>
+{% endblock contentwrapper %}

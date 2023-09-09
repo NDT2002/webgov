@@ -1,0 +1,426 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}" />
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}" />
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css' %}" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}" />
+    {% comment %} <link rel="stylesheet" href="{% static 'css/manager/login.css' %}" /> {% endcomment %}
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}" />
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}" />
+    <!-- summernote -->
+    <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'plugins/ekko-lightbox/ekko-lightbox.css' %}" />
+
+    <link href="{% static 'css/manager/style.css' %}" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper w-100">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white bg-blue navbar-dark">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="bi bi-list"></i></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="index3.html" class="nav-link">Trang Chủ</a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Liên Hệ</a>
+          </li>
+        </ul>
+
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3">
+          <div class="input-group input-group-sm">
+            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" />
+            <div class="input-group-append">
+              <button class="btn btn-navbar" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <!-- Messages Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="bi bi-chat"></i>
+              <span class="badge badge-danger navbar-badge">3</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <a href="#" class="dropdown-item">
+                <!-- Message Start -->
+                <div class="media">
+                  <img src="" alt="User Avatar" class="img-size-50 mr-3 img-circle" />
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      Brad Diesel
+                      <span class="float-right text-sm text-danger"><i class="bi bi-star"></i></span>
+                    </h3>
+                    <p class="text-sm">Call me whenever you can...</p>
+                    <p class="text-sm text-muted"><i class="bi bi-clock mr-1"></i> 4 Hours Ago</p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+            </div>
+          </li>
+          <!-- Notifications Dropdown Menu -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+              <i class="bi bi-bell"></i>
+              <span class="badge badge-warning navbar-badge">15</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <span class="dropdown-item dropdown-header">15 Notifications</span>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">
+                <i class="bi bi-envelope mr-2"></i> 4 new messages
+                <span class="float-right text-muted text-sm">3 mins</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+          </li>
+          {% comment %} <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+              <i class="bi bi-grid"></i>
+            </a>
+          </li> {% endcomment %}
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="{% url 'dashboard' %}" class="brand-link">
+          <img src="{% static 'img/Logo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
+          <span class="brand-text font-weight-light">DAKNONG.GOV</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img src="{% static 'img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image" />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Admin</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'dashboard' %}menu-open{% endif %}">
+                <a href="{% url 'dashboard' %}" class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                  <i class="nav-icon bi bi-speedometer"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item has-treeview {% if request.path == '/manager/news' or request.path == '/manager/news/create' %}active{% endif %}">
+                <a href="{% url 'news_list' %}" class="nav-link {% if request.resolver_match.url_name == 'news_list' or request.resolver_match.url_name == 'create_news' %}active{% endif %}">
+                  <i class="nav-icon bi bi-newspaper"></i>
+                  <p>
+                    Quản lý Tin tức
+                    <i class="bi bi-caret-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{% url 'create_news' %}" class="nav-link">
+                      <i class="bi bi-file-plus nav-icon"></i>
+                      <p>Thêm mới tin tức</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'news_list' %}" class="nav-link">
+                      <i class="bi bi-view-list nav-icon"></i>
+                      <p>Danh sách tin tức</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'categories_list' or request.resolver_match.url_name == 'create_categories' %}menu-open{% endif %}">
+                <a
+                  href="{% url 'categories_list' %}"
+                  class="nav-link {% if request.resolver_match.url_name == 'categories_list' or request.resolver_match.url_name == 'create_categories' %}active{% endif %}"
+                >
+                  <i class="nav-icon bi bi-collection"></i>
+                  <p>
+                    Danh mục
+                    <i class="right bi bi-caret-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{% url 'create_categories' %}" class="nav-link {% if request.resolver_match.url_name == 'create_categories' %}active{% endif %}">
+                      <i class="bi bi-gear-wide-connected nav-icon"></i>
+                      <p>Quản lý danh mục</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'categories_list' %}" class="nav-link {% if request.resolver_match.url_name == 'categories_list' %}active{% endif %}">
+                      <i class="bi bi-view-list nav-icon"></i>
+                      <p>Quản lý nhóm danh mục</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'create_auth' or request.resolver_match.url_name == 'auth_list' %}menu-open{% endif %}">
+                <a href="{% url 'auth_list' %}" class="nav-link {% if request.resolver_match.url_name == 'create_auth' or request.resolver_match.url_name == 'auth_list' %}active{% endif %}">
+                  <i class="nav-icon bi bi-person-vcard"></i>
+                  <p>
+                    Quản lý Tác giả
+                    <i class="bi bi-caret-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item {% if request.resolver_match.url_name == 'create_auth' %}active{% endif %}">
+                    <a href="{% url 'create_auth' %}" class="nav-link {% if request.resolver_match.url_name == 'create_auth' %}active{% endif %}">
+                      <i class="bi bi-person-plus nav-icon"></i>
+                      <p>Thêm tác giả</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'auth_list' %}" class="nav-link {% if request.resolver_match.url_name == 'auth_list' %}active{% endif %}">
+                      <i class="bi bi-view-list nav-icon"></i>
+                      <p>Danh sách tác giả</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'tags_list' %}menu-open{% endif %}">
+                <a href="{% url 'tags_list' %}" class="nav-link {% if request.resolver_match.url_name == 'tags_list' %}active{% endif %}">
+                  <i class="nav-icon bi bi-bookmark"></i>
+                  <p>Quản lý thẻ</p>
+                </a>
+              </li>
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'media_list' %}menu-open{% endif %}">
+                <a href="{% url 'media_list' %}" class="nav-link {% if request.resolver_match.url_name == 'media_list' %}active{% endif %}">
+                  <i class="nav-icon bi bi-journal-album"></i>
+                  <p>Thư viện ảnh</p>
+                  <i class="right bi bi-caret-left"></i>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{% url 'get_gallery' %}" class="nav-link {% if request.resolver_match.url_name == 'get_gallery' %}active{% endif %}">
+                      <i class="bi bi-view-list nav-icon"></i>
+                      <p>Bộ sưu tập</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'media_list' %}" class="nav-link {% if request.resolver_match.url_name == 'widget_list' %}active{% endif %}">
+                      <i class="bi bi-gear-wide-connected nav-icon"></i>
+                      <p>Quản lý Ảnh</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-header">Giao diện</li>
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'widget_list' or request.resolver_match.url_name == 'widget_manager' %}menu-open{% endif %}">
+                <a
+                  href="{% url 'categories_list' %}"
+                  class="nav-link {% if request.resolver_match.url_name == 'widget_list' or request.resolver_match.url_name == 'widget_manager' %}active{% endif %}"
+                >
+                  <i class="nav-icon bi bi-grid-3x3-gap"></i>
+                  <p>
+                    Widget
+                    <i class="right bi bi-caret-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{% url 'widget_manager' %}" class="nav-link {% if request.resolver_match.url_name == 'widget_manager' %}active{% endif %}">
+                      <i class="bi bi-gear-wide-connected nav-icon"></i>
+                      <p>Quản lý Widget</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'widget_list' %}" class="nav-link {% if request.resolver_match.url_name == 'widget_list' %}active{% endif %}">
+                      <i class="bi bi-view-list nav-icon"></i>
+                      <p>Widget Area</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'create_menu' or request.resolver_match.url_name == 'menu_manager' %}menu-open{% endif %}">
+                <a
+                  href="{% url 'menu_manager' %}"
+                  class="nav-link {% if request.resolver_match.url_name == 'create_menu' or request.resolver_match.url_name == 'menu_manager' %}active{% endif %}"
+                >
+                  <i class="nav-icon bi-card-image"></i>
+                  <p>
+                    Menu
+                    <i class="right bi bi-caret-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{% url 'menu_manager' %}" class="nav-link {% if request.resolver_match.url_name == 'menu_manager' %}active{% endif %}">
+                      <i class="bi bi-gear-wide-connected nav-icon"></i>
+                      <p>Menu</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'create_menu' %}" class="nav-link {% if request.resolver_match.url_name == 'create_menu' %}active{% endif %}">
+                      <i class="bi bi-view-list nav-icon"></i>
+                      <p>Thêm Menu mới</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item has-treeview {% if request.resolver_match.url_name == 'banner_manager' or request.resolver_match.url_name == 'create_banner' %}menu-open{% endif %}">
+                <a
+                  href="{% url 'categories_list' %}"
+                  class="nav-link {% if request.resolver_match.url_name == 'banner_manager' or request.resolver_match.url_name == 'create_banner' %}active{% endif %}"
+                >
+                  <i class="nav-icon bi-card-image"></i>
+                  <p>
+                    Banner
+                    <i class="right bi bi-caret-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{% url 'banner_manager' %}" class="nav-link {% if request.resolver_match.url_name == 'banner_manager' %}active{% endif %}">
+                      <i class="bi bi-gear-wide-connected nav-icon"></i>
+                      <p>Banner</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'create_banner' %}" class="nav-link {% if request.resolver_match.url_name == 'create_banner' %}active{% endif %}">
+                      <i class="bi bi-view-list nav-icon"></i>
+                      <p>Thêm Banner mới</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-header">Cài Đặt</li>
+              <li class="nav-item">
+                <a href="{% url 'get_pageinfo' %}" class="nav-link {% if request.resolver_match.url_name == 'get_pageinfo' %}active{% endif %}">
+                  <i class="nav-icon bi bi-person-gear"></i>
+                  <p>Cấu hình trang</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="nav-icon bi bi-person-gear"></i>
+                  <p>Quản lý người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="nav-icon bi bi-box-arrow-right"></i>
+                  <p>Đăng xuất</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      {% block contentwrapper %}{% endblock contentwrapper %}
+      <!-- /.content-wrapper -->
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+      <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    {% if request.resolver_match.url_name != 'menu_manager' %}
+    <script src="{% static 'js/pages/main.js' %}"></script>
+    {% endif %}
+    {% if request.resolver_match.url_name == 'menu_manager' %}
+    <script src="{% static 'js/pages/menusetting.js' %}"></script>
+    {% endif %}
+
+    <script>
+      $.widget.bridge("uibutton", $.ui.button);
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- ChartJS -->
+    <script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+    <!-- Sparkline -->
+    {% comment %}
+    <script src="{% static 'plugins/sparklines/sparkline.js' %}"></script>
+    {% endcomment %}
+    <!-- JQVMap -->
+    {% comment %}
+    <script src="{% static 'plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+    {% endcomment %} {% comment %}
+    <script src="{% static 'plugins/jqvmap/maps/jquery.vmap.usa.js' %}"></script>
+    {% endcomment %}
+    <!-- DataTables -->
+    <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{% static 'plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+    <!-- daterangepicker -->
+    <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+    <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <!-- Summernote -->
+    <script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
+    <!-- overlayScrollbars -->
+    <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'js/adminlte.js' %}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    {% if request.resolver_match.url_name == 'dashboard' %}
+    {% endif %}
+    <script src="{% static 'js/pages/dashboard.js' %}"></script>
+    <!-- Filterizr-->
+    <script src="{% static 'plugins/filterizr/jquery.filterizr.min.js' %}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{% static 'js/pages/term.js' %}"></script>
+    <!-- page script -->
+  </body>
+</html>

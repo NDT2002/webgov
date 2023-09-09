@@ -1,0 +1,67 @@
+{% extends 'manager/base.html' %}
+{% load static %}
+{% block contentwrapper %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Tác giả</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Auth</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Thêm mới tác giả</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form role="form">
+          <div class="card-body row">
+            <div class="col-md-6 form-group">
+              <label for="exampleInputName">Họ tên</label>
+              <input type="name" class="form-control" id="exampleInputName" placeholder="Nhập họ tên">
+            </div>
+            <div class="col-md-6 form-group">
+              <label for="exampleInputPhone">Số điện thoại</label>
+              <input type="phone" class="form-control" id="exampleInputPhone" placeholder="Nhập Số điện thoại">
+            </div>
+            <div class="col-12 form-group">
+              <label for="exampleInputAddress">Địa chỉ</label>
+              <input type="address" class="form-control" id="exampleInputAddress" placeholder="Nhập Địa chỉ">
+            </div>
+            <div class="col-12 form-group">
+              <label for="exampleInputEmail1">Chức vụ/Nghề nghiệp</label>
+              <input type="name" class="form-control" id="exampleInputEmail1" placeholder="Mô tả chức vụ">
+            </div>
+            <div class="col form-group">
+              <label>Tiểu sử</label>
+              <textarea class="form-control" rows="3" placeholder="Nhập tiểu sử ..."></textarea>
+            </div>
+          </div>
+          <!-- /.card-body -->
+
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <button type="submit" class="btn btn-danger">Hủy</button>
+          </div>
+        </form>
+      </div>
+      <!-- Default box -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock contentwrapper %}

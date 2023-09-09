@@ -1,0 +1,52 @@
+{% extends 'manager/base.html' %} {% load static %} {% block contentwrapper %}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">
+            Gallery <a href=""><i class="bi bi-file-plus text-primary"></i></a>
+          </h1>
+        </div>
+
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+  <section class="content">
+    <!-- general form elements disabled -->
+    
+  </section>
+  <script>
+    $(function () {
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+          event.preventDefault();
+          $(this).ekkoLightbox({
+            alwaysShowClose: true
+          });
+        });
+    
+        $('.filter-container').filterizr({gutterPixels: 3});
+        $('.btn[data-filter]').on('click', function() {
+          $('.btn[data-filter]').removeClass('active');
+          $(this).addClass('active');
+        });
+    
+        $("#example1").DataTable({
+          responsive: true,
+          autoWidth: false,
+        });
+      })
+  </script>
+</div>
+{% endblock contentwrapper %}

@@ -1,0 +1,293 @@
+{% extends 'manager/base.html' %} {% load static %} {% block contentwrapper %}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Tổng Quan</h1>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-4 col-12">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>Tổng Bài viết</p>
+            </div>
+            <div class="icon">
+              <i class="bi bi-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">Xem Thêm <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-12">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+              <p>Lượt xem Trung Bình Mỗi Bài Viết</p>
+            </div>
+            <div class="icon">
+              <i class="bi bi-binoculars"></i>
+            </div>
+            <a href="#" class="small-box-footer">Xem Thêm <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-12">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>Tác Giả</p>
+            </div>
+            <div class="icon">
+              <i class="bi bi-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">Xem Thêm <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-5 connectedSortable">
+          <!-- Custom tabs (Charts with tabs)-->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-chart-pie mr-1"></i>
+                Biểu Đồ Thống Kê
+              </h3>
+              <div class="card-tools">
+                <ul class="nav nav-pills ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="tab-content p-0">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px">
+                  <canvas id="revenue-chart-canvas" height="300" style="height: 300px"></canvas>
+                </div>
+                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px">
+                  <canvas id="sales-chart-canvas" height="300" style="height: 300px"></canvas>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-7 connectedSortable">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Inbox</h3>
+
+              <div class="card-tools">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Search Mail" />
+                  <div class="input-group-append">
+                    <div class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="mailbox-controls">
+                <!-- /.float-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="icheck-primary">
+                          <input type="checkbox" value="" id="check1" />
+                          <label for="check1"></label>
+                        </div>
+                      </td>
+                      <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                      <td class="mailbox-subject">
+                        <b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
+                      </td>
+                      <td class="mailbox-date">5 mins ago</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="icheck-primary">
+                          <input type="checkbox" value="" id="check2" />
+                          <label for="check2"></label>
+                        </div>
+                      </td>
+                      <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                      <td class="mailbox-subject">
+                        <b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
+                      </td>
+                      <td class="mailbox-date">28 mins ago</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="icheck-primary">
+                          <input type="checkbox" value="" id="check3" />
+                          <label for="check3"></label>
+                        </div>
+                      </td>
+                      <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                      <td class="mailbox-subject">
+                        <b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
+                      </td>
+                      <td class="mailbox-date">11 hours ago</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="icheck-primary">
+                          <input type="checkbox" value="" id="check4" />
+                          <label for="check4"></label>
+                        </div>
+                      </td>
+                      <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                      <td class="mailbox-subject">
+                        <b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
+                      </td>
+                      <td class="mailbox-date">15 hours ago</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer p-0">
+              <div class="mailbox-controls">
+                <!-- /.float-right -->
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        </section>
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+    </div>
+    <!-- /.container-fluid -->
+    <div class="button_TG row m-0 p-1 g ">
+      <button class="btn btn-md btn-primary col-12 col-md-3 m-1">
+        <a class="nav-link active text-white" href="#revenue-chart" data-toggle="tab"
+          ><i class="bi bi-file-plus"></i> Tạo mới Tin Tức</a
+        >
+      </button>
+      <button class="btn btn-md btn-success col-12 col-lg-4 col-md-4 m-1">
+        <a class="nav-link active text-white" href="#revenue-chart" data-toggle="tab"
+          ><i class="bi bi-file-plus"></i> Tạo Mới Danh Mục</a
+        >
+      </button>
+      <button class="btn btn-md btn-warning col-12 col-md-3 m-1">
+        <a class="nav-link active text-light" href="#revenue-chart" data-toggle="tab"
+          ><i class="bi bi-file-plus"></i> Tạo Mới Tác Giả</a
+        >
+      </button>
+    </div>
+    <!-- Main content -->
+    <section class="content mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Thông Tin Tác Giả</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>STT</th>
+                      <th>Tên Tác Giả</th>
+                      <th>Số ĐIện Thoại</th>
+                      <th>Số Bài Viết</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet Explorer 4.0</td>
+                      <td>Win 95+</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet Explorer 5.0</td>
+                      <td>Win 95+</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet Explorer 5.5</td>
+                      <td>Win 95+</td>
+                      <td>5.5</td>
+                    </tr>
+                    <tr>
+                      <td>Trident</td>
+                      <td>Internet Explorer 6</td>
+                      <td>Win 98+</td>
+                      <td>6</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </section>
+  <!-- /.content -->
+</div>
+{% endblock contentwrapper %}
